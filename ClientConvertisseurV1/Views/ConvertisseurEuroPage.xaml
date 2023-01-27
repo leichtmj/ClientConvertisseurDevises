@@ -1,0 +1,73 @@
+<!--  Copyright (c) Microsoft Corporation and Contributors.  -->
+<!--  Licensed under the MIT License.  -->
+
+<Page
+    x:Class="ClientConvertisseurV1.Views.ConvertisseurEuroPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="using:ClientConvertisseurV1.Views"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+    mc:Ignorable="d">
+
+    <RelativePanel>
+        <TextBlock
+            x:Name="txtmontanteuros"
+            Margin="0,150,0,25"
+            RelativePanel.AlignHorizontalCenterWithPanel="True"
+            Text="Montant en Euros" />
+
+
+        <TextBlock
+            x:Name="txtdevise"
+            Margin="0,0,0,25"
+            RelativePanel.AlignHorizontalCenterWithPanel="True"
+            RelativePanel.Below="txtmontanteuros"
+            Text="Devise" />
+
+        <TextBox
+            x:Name="saisie"
+            Width="175"
+            Margin="0,0,0,25"
+            RelativePanel.AlignHorizontalCenterWithPanel="True"
+            RelativePanel.Below="txtdevise"
+            Text="{Binding Input}" />
+
+        <ComboBox
+            x:Name="combox"
+            Width="175"
+            Margin="0,0,0,25"
+            DisplayMemberPath="Nomdevise"
+            ItemsSource="{Binding LesDevises}"
+            RelativePanel.AlignHorizontalCenterWithPanel="True"
+            RelativePanel.Below="saisie" />
+
+
+
+        <Button
+            x:Name="button"
+            Width="175"
+            Margin="0,0,0,25"
+            Content="Convertir"
+            RelativePanel.AlignHorizontalCenterWithPanel="True"
+            RelativePanel.Below="combox" 
+            Click="button_Click"/>
+        <TextBlock
+            x:Name="txtresult"
+            Margin="0,0,0,25"
+            RelativePanel.AlignHorizontalCenterWithPanel="True"
+            RelativePanel.Below="button"
+            Text="Montant en devises" />
+
+        <TextBox
+            x:Name="txtconversion"
+            Width="175"
+            Margin="0,0,0,25"
+            IsReadOnly="True"
+            RelativePanel.AlignHorizontalCenterWithPanel="True"
+            RelativePanel.Below="txtresult"
+            Text="{Binding Resultat}" />
+
+    </RelativePanel>
+</Page>
