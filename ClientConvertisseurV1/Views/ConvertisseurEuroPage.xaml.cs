@@ -101,15 +101,33 @@ namespace ClientConvertisseurV1.Views
         {
             List<Devise> result = await service.GetDevisesAsync("devises");
             if (result == null)
-                throw new ArgumentException("API non disponible !", "Erreur");
+            {
+                DisplayshowAsync("Erreur", "API non disponible");
+            }
             else
                 LesDevises = new ObservableCollection<Devise>(result);
         }
 
         private void button_Click(object sender, RoutedEventArgs e)
         {
-            Resultat = Math.Round(Input * ((Devise)combox.SelectedItem).Taux, 2);
+            if(combox.SelectedItem==null || Input==0)
+            {
+                DisplayshowAsync("Erreur", "Veuillez saisir un montant et sélectionner une devise.");
+            }
+            else
+                Resultat = Math.Round(Input * ((Devise)combox.SelectedItem).Taux, 2);
+        }
 
+        private async void DisplayshowAsync(string title, string desc)
+        {
+            ContentDialog contentDialog = new ContentDialog
+            {
+                Title = title,
+                Content = desc,
+                PrimaryButtonText = "Ok"
+            };
+            contentDialog.XamlRoot = this.Content.XamlRoot;
+            ContentDialogResult result = await contentDialog.ShowAsync();
         }
     }
 }
