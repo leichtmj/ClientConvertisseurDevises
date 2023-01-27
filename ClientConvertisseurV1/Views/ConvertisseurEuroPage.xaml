@@ -32,8 +32,7 @@
             Margin="0,0,0,25"
             RelativePanel.AlignHorizontalCenterWithPanel="True"
             RelativePanel.Below="txtdevise"
-            Text="{Binding Input, Mode=TwoWay}" 
-           />
+            Text="{Binding Input, Mode=TwoWay}" />
 
         <ComboBox
             x:Name="combox"
@@ -50,10 +49,10 @@
             x:Name="button"
             Width="175"
             Margin="0,0,0,25"
+            Click="button_Click"
             Content="Convertir"
             RelativePanel.AlignHorizontalCenterWithPanel="True"
-            RelativePanel.Below="combox" 
-            Click="button_Click"/>
+            RelativePanel.Below="combox" />
         <TextBlock
             x:Name="txtresult"
             Margin="0,0,0,25"
