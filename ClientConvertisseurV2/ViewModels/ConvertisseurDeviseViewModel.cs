@@ -1,22 +1,16 @@
-﻿using ClientConvertisseurV2.Models;
-using ClientConvertisseurV2.Services;
-using CommunityToolkit.Mvvm.ComponentModel;
-using CommunityToolkit.Mvvm.Input;
-using Microsoft.UI.Xaml.Controls;
+﻿using CommunityToolkit.Mvvm.Input;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace ClientConvertisseurV2.ViewModels
 {
-    public class ConvertisseurEuroViewModel : ConvertisseurViewModel
+    public class ConvertisseurDeviseViewModel : ConvertisseurViewModel
     {
-
-        public ConvertisseurEuroViewModel() : base()
+        public ConvertisseurDeviseViewModel() : base()
         { }
 
         public override void ActionSetConversion()
@@ -26,8 +20,7 @@ namespace ClientConvertisseurV2.ViewModels
                 DisplayshowAsync("Erreur", "Veuillez saisir un montant et sélectionner une devise.");
             }
             else
-                Resultat = Math.Round(Input * SelectedDevise.Taux, 2);
+                Resultat = Math.Round(Input / SelectedDevise.Taux, 2);
         }
-
     }
 }

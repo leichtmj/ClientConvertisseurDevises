@@ -43,6 +43,7 @@ namespace ClientConvertisseurV2
 
             Ioc.Default.ConfigureServices(new ServiceCollection()
                 .AddSingleton<ConvertisseurEuroViewModel>()
+                .AddSingleton<ConvertisseurDeviseViewModel>()
                 .BuildServiceProvider());
         }
 
@@ -51,6 +52,11 @@ namespace ClientConvertisseurV2
         public ConvertisseurEuroViewModel ConvertisseurEuroVM
         {
             get { return Ioc.Default.GetService<ConvertisseurEuroViewModel>(); }
+        }
+
+        public ConvertisseurDeviseViewModel ConvertisseurDeviseVM
+        {
+            get { return Ioc.Default.GetService<ConvertisseurDeviseViewModel>(); }
         }
 
         /// <summary>
@@ -68,7 +74,7 @@ namespace ClientConvertisseurV2
             //Ensure the current window is active
             m_window.Activate();
             //Navigate to the first page
-            rootFrame.Navigate(typeof(ConvertisseurEuroPage));
+            rootFrame.Navigate(typeof(ConvertisseurDevisePage));
         }
 
         private Window m_window;
