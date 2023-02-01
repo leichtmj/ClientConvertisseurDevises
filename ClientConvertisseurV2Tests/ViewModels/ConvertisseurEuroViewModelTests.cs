@@ -23,8 +23,48 @@ namespace ClientConvertisseurV2.ViewModels.Tests
         [TestMethod()]
         public void ActionSetConversionTest()
         {
-            
+
+            ConvertisseurEuroViewModel convertisseurEuro = new ConvertisseurEuroViewModel();
+
+            convertisseurEuro.Input = 100;
+
+
+            Devise d = new Devise(1, "Mora", 1.07);
+
+
+
+            convertisseurEuro.SelectedDevise = d;
+
+            convertisseurEuro.ActionSetConversion();
+
+            Assert.AreEqual(107, convertisseurEuro.Resultat);
+
         }
+
+        [TestMethod()]
+        public void GetDataOnLoadAsyncTest_API_Non_Démarré()
+        {
+            //Arrange
+            ConvertisseurEuroViewModel convertisseurEuro = new ConvertisseurEuroViewModel();
+            List<Devise> devises = new List<Devise>();
+            devises.AddRange(new List<Devise>
+            {
+                new Devise(1,"Dollar", 1.08),
+                new Devise(2, "Franc Suisse", 1.07),
+                new Devise(3, "Yen", 120)
+            });
+            //Act
+            convertisseurEuro.GetDataOnLoadAsync();
+            Thread.Sleep(1000);
+            //Assert
+            Assert.IsNull(convertisseurEuro.LesDevises);
+            CollectionAssert.AreNotEqual(devises, convertisseurEuro.LesDevises);
+            //CollectionAssert.AreEqual()
+
+
+        }
+
+
 
         /// <summary>
         /// Test GetDataOnLoadAsyncTest OK

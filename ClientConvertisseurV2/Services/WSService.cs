@@ -12,7 +12,7 @@ namespace ClientConvertisseurV2.Services
 {
     public class WSService : IService
     {
-        static HttpClient client = new HttpClient();
+        HttpClient client = new HttpClient();
 
         public WSService(string url)
         {
