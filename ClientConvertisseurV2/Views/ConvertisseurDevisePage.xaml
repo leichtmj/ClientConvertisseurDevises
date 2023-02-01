@@ -1,18 +1,33 @@
-<!-- Copyright (c) Microsoft Corporation and Contributors. -->
-<!-- Licensed under the MIT License. -->
+<!--  Copyright (c) Microsoft Corporation and Contributors.  -->
+<!--  Licensed under the MIT License.  -->
 
 <Page
     x:Class="ClientConvertisseurV2.Views.ConvertisseurDevisePage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:ClientConvertisseurV2.Views"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="using:ClientConvertisseurV2.Views"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+    mc:Ignorable="d">
 
 
     <RelativePanel>
+
+        <NavigationView
+            x:Name="navview"
+            IsSettingsVisible="False"
+            ItemInvoked="NavigationViewControl_ItemInvoked"
+            PaneDisplayMode="Top">
+            <NavigationView.MenuItems>
+                <NavigationViewItem x:Name="to_converteuro" Content="Convertir Euro vers Devise" />
+                <NavigationViewItem x:Name="to_convertdevise" Content="Convertir Devise vers Euro" />
+            </NavigationView.MenuItems>
+        </NavigationView>
+
+
+
+
         <TextBlock
             x:Name="txtmontanteuros"
             Margin="0,150,0,25"

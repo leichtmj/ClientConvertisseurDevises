@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace ClientConvertisseurV2.ViewModels
 {
-    public abstract class ConvertisseurViewModel : ObservableObject
+    public abstract class ConvertisseurViewModel : ObservableObject, IConvertisseurViewModel
     {
         private ObservableCollection<Devise> lesDevises;
         private double input;

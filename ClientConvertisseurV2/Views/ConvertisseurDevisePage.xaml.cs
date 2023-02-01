@@ -31,5 +31,19 @@ namespace ClientConvertisseurV2.Views
             this.InitializeComponent();
             DataContext = ((App)Application.Current).ConvertisseurDeviseVM;
         }
+
+   
+        private void NavigationViewControl_ItemInvoked(NavigationView sender, NavigationViewItemInvokedEventArgs args)
+        {
+            switch (sender.MenuItems.IndexOf(args.InvokedItemContainer))
+            {
+                case 0:
+                    sender.Content = new ConvertisseurEuroPage();
+                    break;
+                case 1:
+                    sender.Content = new ConvertisseurDevisePage();
+                    break;
+            }
+        }
     }
 }
